@@ -20,7 +20,7 @@ if(myBot.testConnection()){
   Serial.println("Not connected");
 }
 
-  myBot.sendMessage(id,"selamat malam baren");
+  myBot.sendMessage(id,"selamat datang baren!");
   Serial.println("pesan terkirim");
 }
 

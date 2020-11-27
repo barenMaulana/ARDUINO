@@ -1,4 +1,4 @@
-const int relay = 5;
+const int relay = D0;
 
 void setup() {
 

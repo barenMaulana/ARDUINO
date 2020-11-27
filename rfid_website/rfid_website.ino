@@ -53,8 +53,6 @@ String logToServer(unsigned long cardUID) {
         digitalWrite(D0, HIGH);
       Serial.println(payload);
     }else if(httpCode == HTTP_CODE_BAD_REQUEST){
-     String payload = http.getString();
-     
      Serial.println("Anda tidak terdaftar disini!");
   }
   }
