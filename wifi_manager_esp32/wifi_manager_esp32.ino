@@ -1,7 +1,8 @@
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
+#include <Arduino.h>
+#include <WebServer.h>
 #include <DNSServer.h>
-#include <ESP8266WebServer.h>
-#include <WiFiManager.h> 
+#include <WiFiManager.h>         
 
 // Set web server port number to 80
 WiFiServer server(80);
@@ -32,7 +33,7 @@ void setup() {
   WiFiManager wifiManager;
   
   // Uncomment and run it once, if you want to erase all the stored information
-  wifiManager.resetSettings();
+  //wifiManager.resetSettings();
   
   // set custom ip for portal
   //wifiManager.setAPConfig(IPAddress(10,0,1,1), IPAddress(10,0,1,1), IPAddress(255,255,255,0));

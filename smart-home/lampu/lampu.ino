@@ -18,7 +18,6 @@ void setup () {
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
     Serial.println("Connecting..");
-
   }
 
   if(WiFi.status() == WL_CONNECTED){
@@ -31,6 +30,10 @@ void setup () {
 }
 
 void loop() {
+  while (WiFi.status() != WL_CONNECTED){
+      WiFi.begin(ssid, password);
+          delay(1000);
+    }
 
   if (WiFi.status() == WL_CONNECTED) {
     digitalWrite(wifi, HIGH);
