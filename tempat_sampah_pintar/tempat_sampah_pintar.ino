@@ -19,7 +19,7 @@ void setup () {
   mp3_set_serial (mp3Serial);  
   // Delay is required before accessing player. From my experience it's ~1 sec
   delay(1000); 
-  mp3_set_volume (25);
+  mp3_set_volume (50);
 
   //ultrasonic
   pinMode(triggerPin, OUTPUT);
@@ -28,6 +28,8 @@ void setup () {
   //servo
   myservo.attach(D5);  
 }
+
+  int lompatan = 0;
 
 void loop () {
 
@@ -42,19 +44,48 @@ void loop () {
   Serial.println("jarak :");
   Serial.print(jarak);
   Serial.println(" cm");
-  delay(1000);
-  
-  if(jarak <= 10){
-   for(int i = 1; i <= 4; i++){
-      mp3_next ();
-    }
 
+//  if(lompatan == 4){
+//    for(int j = 0; j <= 3; j++){
+//      myservo.write(0); 
+//      Serial.println("play next");
+//      mp3_next ();
+//      Serial.println(lompatan);
+//      Serial.print("Busy: ");
+//      Serial.println(analogRead(PIN_BUSY));
+//      delay (1000);
+//
+//          myservo.write(sudut); 
+//    Serial.println("Stop");
+//    mp3_stop ();
+//    Serial.print("Busy: ");
+//    Serial.println(analogRead(PIN_BUSY));
+//    }
+//  }
+  
+  if(jarak <= 30){
+    lompatan++;
+
+     if(lompatan >= 4){ 
+       for(int i = 1; i <= 4; i++){
+          mp3_next ();
+        }
+     }
+    
     myservo.write(0); 
     Serial.println("play next");
     mp3_next ();
+    Serial.println(lompatan);
     Serial.print("Busy: ");
     Serial.println(analogRead(PIN_BUSY));
+    if(lompatan == 4){  
+      for(int i = 1; i <= 3; i++){
+            mp3_next ();
+            mp3_stop ();
+          }
+    }else{
     delay (6000);
+    }
   }
 
     myservo.write(sudut); 
@@ -62,5 +93,4 @@ void loop () {
     mp3_stop ();
     Serial.print("Busy: ");
     Serial.println(analogRead(PIN_BUSY));
-    delay(100);
 }
